@@ -1,0 +1,12 @@
+# an example of a mock function:
+jest.fn() creates a mock funciton, like a regular funciton. 
+mockReturnValue('Alice') tells it to always return Alice
+
+const mockFetchUserName = jest.fn().mockReturnValue('Alice');
+const greeting = greetUser(mockFetchUserName);
+
+in the function we call, mockFetchUserName() and so we return
+the vaue Alice early, this is convinient for our tests as we don't disrupt stuff
+
+
+

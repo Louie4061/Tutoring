@@ -1,0 +1,45 @@
+To start the server we have:
+
+brew services start mysql
+brew services list # checks it is running
+
+mysql.server start # we can also do this
+
+mysql -u root -p # no password
+
+CREATE DATABASE GeeksForGeeks # creates an empty DATABASE
+SHOW DATABASES;
+USE GeeksForGeeks; # switches to that sql DATABASE
+DROP DATABASE GeeksForGeeks; # deletes
+
+# Creates a table with some given keys:
+CREATE TABLE Customer(
+    CustomerID INT PRIMARY KEY,
+    CustomerName VARCHAR(50),
+    LastName VARCHAR(50),
+    Country VARCHAR(50),
+    Age INT CHECK (Age >= 0 AND Age <= 99),
+    Phone int(10)
+);
+
+# Here is how to start inserting stuff in:
+INSERT INTO Customer (CustomerID, CustomerName, LastName, Country, Age, Phone)
+VALUES (1, 'Shubham', 'Thakur', 'India','23','0491744588'),
+       (2, 'Aman ', 'Chopra', 'Australia','21','0491744588'),
+       (3, 'Naveen', 'Tulasi', 'Sri lanka','24','0491744588'),
+       (4, 'Aditya', 'Arpan', 'Austria','21','0491744588'),
+       (5, 'Nishant. Salchichas S.A.', 'Jain', 'Spain','22','0491744588');
+
+# Here is how we can get stuff from the db:
+SELECT CustomerName, LastName 
+FROM Customer;
+
+# or we can select all of them:
+ SELECT * FROM Customer;
+
+# select with a where clause:
+SELECT CustomerName 
+FROM Customer 
+where Age = '21'; 
+
+# if in a multiline mode just use: ';'

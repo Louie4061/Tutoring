@@ -1,0 +1,21 @@
+Here is some raw stuff that I can use to test:
+
+insert student:
+{
+  "StudentID": "123456",
+  "FirstName": "John",
+  "LastName": "Doe",
+  "Country": "Australia",
+  "Year": 3,
+  "Phone": "+61 412 345 678",
+  "Email": "john.doe@example.com"
+}
+
+delete or get student has req.params.id;
+
+Routes:
+/students : put : adds a student to the database
+/students : delete : clears the database
+/students : get : gets all students from the database
+/students/:id : get : gets a student by id
+/students/:id : delete : removes a student

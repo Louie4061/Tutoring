@@ -1,0 +1,107 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./css/styles.css" />
+    <title>Advanced Student Manager</title>
+
+</head>
+
+<body>
+    <h1>Student Tutoring Dashboard</h1>
+
+    <!-- this ir our modal to edit a student stuff -->
+    <div id="editModal" class="modal">
+        <div class="modal-content">
+            <span class="close-modal">&times;</span>
+            <h2>Edit Student</h2>
+            <form id="editForm">
+                <input type="hidden" id="editStudentId">
+
+                <div class="form-grid">
+                    <!-- Column 1 -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="editFirstName">First Name*</label>
+                            <input type="text" id="editFirstName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editLastName">Last Name*</label>
+                            <input type="text" id="editLastName" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editEmail">Email*</label>
+                            <input type="email" id="editEmail" required>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editPhone">Phone</label>
+                            <input type="tel" id="editPhone" pattern="[0-9]{10}">
+                        </div>
+                    </div>
+
+                    <!-- Column 2 -->
+                    <div class="form-column">
+                        <div class="form-group">
+                            <label for="editSchool">School</label>
+                            <input type="text" id="editSchool">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editYear">Year</label>
+                            <select id="editYear">
+                                <option value="7">Year 7</option>
+                                <option value="8">Year 8</option>
+                                <option value="9">Year 9</option>
+                                <option value="10">Year 10</option>
+                                <option value="11">Year 11</option>
+                                <option value="12">Year 12</option>
+                            </select>
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editCountry">Country</label>
+                            <input type="text" id="editCountry">
+                        </div>
+
+                        <div class="form-group">
+                            <label for="editSubject">Subject</label>
+                            <select id="editSubject">
+                                <option value="Mathematics">Mathematics</option>
+                                <option value="Physics">Physics</option>
+                                <option value="Chemistry">Chemistry</option>
+                                <option value="Biology">Biology</option>
+                                <option value="English">English</option>
+                            </select>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Schedule Section -->
+                <div class="form-section">
+                    <h3>Tutoring Schedule</h3>
+                    <div id="scheduleContainer">
+                        <!-- Dynamically added schedule inputs -->
+                    </div>
+                    <button type="button" class="add-schedule-btn">+ Add Session</button>
+                </div>
+
+                <div class="form-actions">
+                    <button type="button" class="cancel-btn">Cancel</button>
+                    <button type="submit" class="save-btn">Save Changes</button>
+                </div>
+            </form>
+        </div>
+    </div>
+
+    <div id="student-container"></div>
+
+    <button class="add-btn">Add New Student</button>
+    <script src="js/app.js" defer></script>
+</body>
+
+</html>

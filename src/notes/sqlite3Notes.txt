@@ -1,0 +1,56 @@
+connection = sqlite3.connect('filename.db') # if there is a file, we connect to that DATABASE
+cursor = connection.cursor() # this cursor is what can send commands to the db
+connection.close() # closes it
+
+# has our command:
+sql_command = """CREATE TABLE emp ( 
+staff_number INTEGER PRIMARY KEY, 
+fname VARCHAR(20), 
+lname VARCHAR(30), 
+gender CHAR(1), 
+joining DATE);"""
+
+# in python this is a way to use our arrays, the f string formats and uses {}:
+crsr.execute(f'INSERT INTO emp VALUES ({pk[i]}, "{f_name[i]}", 
+    "{l_name[i]}", "{gender[i]}", "{date[i]}")')
+
+connection.commit() # commits our changes in the database, our execture aren't made
+
+# formatting example:
+template = "Hello, my name is {} and I'm {} years old."
+result = template.format("Alice", 30)
+
+# parameterise sql:
+query = "INSERT INTO emp VALUES (?, ?, ?, ?, ?)"
+cursor.execute(query, (pk[i], f_name[i], l_name[i], gender[i], date[i]))
+
+crsr.execute(sql_command)
+
+# When I am working on js
+const sqlite3 = require('sqlite3').verbose();
+const path = require('path');
+const db = new sqlite3.Database(
+  path.join(__dirname, 'tutoring.db'), 
+  sqlite3.OPEN_READWRITE | sqlite3.OPEN_CREATE,
+  (err) => {
+    if (err) console.error('Database connection error:', err);
+    else console.log('Connected to SQLite database');
+  }
+);
+
+// some sqlite3 commands used to initialise the db
+function initializeDB() {
+  db.exec(``);
+}
+
+module.exports = { db, initializeDB };
+
+# we can use these commands:
+db.all() – Get multiple rows
+db.get() – Get single row
+db.run() – Execute INSERT/UPDATE/DELETE
+db.each() – Iterate through results
+
+# more advanced query:
+
+

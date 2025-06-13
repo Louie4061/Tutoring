@@ -1,0 +1,5 @@
+express: Web framework for your backend
+cors: Handle Cross-Origin Resource Sharing
+body-parser: Parse incoming request bodies
+nodemon: Auto-restarts server during development
+prettier: Code formatter
