@@ -1,0 +1,240 @@
+   :root {
+       --primary: #3498db;
+       --secondary: #2ecc71;
+       --dark: #2c3e50;
+       --light: #ecf0f1;
+       --danger: #e74c3c;
+   }
+
+   body {
+       font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+       max-width: 1200px;
+       margin: 0 auto;
+       padding: 20px;
+       background-color: #f5f5f5;
+       color: #333;
+   }
+
+   h1 {
+       color: var(--dark);
+       text-align: center;
+       margin-bottom: 30px;
+   }
+
+   .student_card {
+       background: white;
+       border-radius: 8px;
+       box-shadow: 0 2px 10px rgba(0, 0, 0, 0.1);
+       padding: 25px;
+       margin-bottom: 25px;
+       position: relative;
+   }
+
+   .student_header {
+       display: flex;
+       justify-content: space-between;
+       align-items: center;
+       border-bottom: 1px solid #eee;
+       padding-bottom: 15px;
+       margin-bottom: 15px;
+   }
+
+   .student_name {
+       font-size: 1.5rem;
+       font-weight: 600;
+       color: var(--dark);
+   }
+
+   .student_school {
+       font-size: 0.9rem;
+       color: #7f8c8d;
+   }
+
+   .info_section {
+       margin-bottom: 20px;
+   }
+
+   .info_grid {
+       display: grid;
+       grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+       gap: 15px;
+       margin-top: 10px;
+   }
+
+   .info_item {
+       background-color: var(--light);
+       padding: 12px;
+       border-radius: 5px;
+   }
+
+   .info_label {
+       font-weight: 600;
+       color: var(--dark);
+       margin-bottom: 5px;
+       display: block;
+   }
+
+   .syllabus_link {
+       color: var(--primary);
+       text-decoration: none;
+   }
+
+   .syllabus_link:hover {
+       text-decoration: underline;
+   }
+
+   .tutoring_schedule {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 10px;
+   }
+
+   .schedule_item {
+       background-color: #e3f2fd;
+       padding: 8px 12px;
+       border-radius: 20px;
+       font-size: 0.85rem;
+   }
+
+   .worksheets {
+       display: flex;
+       gap: 15px;
+   }
+
+   .worksheet_list {
+       flex: 1;
+   }
+
+   .worksheet_item {
+       padding: 8px;
+       margin-bottom: 5px;
+       background-color: #f8f9fa;
+       border-left: 3px solid var(--secondary);
+   }
+
+   .past_scores {
+       display: flex;
+       flex-wrap: wrap;
+       gap: 10px;
+   }
+
+   .score_item {
+       background-color: #fff8e1;
+       padding: 6px 10px;
+       border-radius: 4px;
+       font-size: 0.8rem;
+   }
+
+   .add_btn {
+       background-color: var(--primary);
+       color: white;
+       border: none;
+       padding: 12px 25px;
+       border-radius: 5px;
+       cursor: pointer;
+       font-size: 16px;
+       display: block;
+       margin: 30px auto;
+       transition: background-color 0.3s;
+   }
+
+   .add_btn:hover {
+       background-color: #2980b9;
+   }
+
+   .section_title {
+       font-size: 1.1rem;
+       color: var(--dark);
+       margin: 20px 0 10px;
+       padding-bottom: 5px;
+       border-bottom: 1px dashed #ddd;
+   }
+
+   /* Modal Styles */
+   .modal {
+       display: none;
+       position: fixed;
+       z-index: 100;
+       left: 0;
+       top: 0;
+       width: 100%;
+       height: 100%;
+       background: rgba(0, 0, 0, 0.5);
+   }
+
+   .modal_content {
+       background: white;
+       margin: 2% auto;
+       padding: 25px;
+       width: 90%;
+       max-width: 800px;
+       border-radius: 8px;
+       max-height: 90vh;
+       overflow-y: auto;
+   }
+
+   .close_modal {
+       float: right;
+       font-size: 28px;
+       cursor: pointer;
+       color: #aaa;
+   }
+
+   /* Form Layout */
+   .form_grid {
+       display: grid;
+       grid-template-columns: 1fr 1fr;
+       gap: 20px;
+   }
+
+   .form_group {
+       margin-bottom: 15px;
+   }
+
+   .form_group label {
+       display: block;
+       margin-bottom: 5px;
+       font-weight: 600;
+       color: #2c3e50;
+   }
+
+   .form_group input,
+   .form_group select {
+       width: 100%;
+       padding: 8px 12px;
+       border: 1px solid #ddd;
+       border-radius: 4px;
+       box-sizing: border-box;
+   }
+
+   .form_section {
+       margin: 20px 0;
+       padding: 15px;
+       background: #f8f9fa;
+       border-radius: 6px;
+   }
+
+   .form_actions {
+       display: flex;
+       justify-content: flex-end;
+       gap: 10px;
+       margin-top: 20px;
+   }
+
+   .save_btn {
+       background: #2ecc71;
+       color: white;
+       border: none;
+       padding: 10px 20px;
+       border-radius: 4px;
+       cursor: pointer;
+   }
+
+   .cancel_btn {
+       background: #e74c3c;
+       color: white;
+       border: none;
+       padding: 10px 20px;
+       border-radius: 4px;
+       cursor: pointer;
+   }
