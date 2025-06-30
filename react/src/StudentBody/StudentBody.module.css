@@ -6,6 +6,36 @@
        --danger: #e74c3c;
    }
 
+   /* In App.css or styled-components */
+   .popup-overlay {
+       position: fixed;
+       top: 0;
+       left: 0;
+       width: 100%;
+       height: 100%;
+       background: rgba(0, 0, 0, 0.5);
+       /* dimmed background */
+       display: flex;
+       align-items: center;
+       justify-content: center;
+       z-index: 1000;
+   }
+
+   .popup-content {
+       background: white;
+       padding: 20px 30px;
+       border-radius: 10px;
+       max-width: 400px;
+       box-shadow: 0 4px 8px rgba(0, 0, 0, 0.2);
+   }
+
+
+
+   /* Red border */
+   hr.divider {
+       border-top: 10px dashed rgb(255, 200, 0);
+   }
+
    body {
        font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
        max-width: 1200px;

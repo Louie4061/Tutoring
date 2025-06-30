@@ -1,17 +1,4 @@
 import { useState, useEffect, useRef } from 'react'
-
-// // const [count, setCount] = useState(0)
-// useEffect(() => {
-//   const connection = createConnection(serverUrl, roomId);
-//   connection.connect();
-//   connection.sendMessage("Hello");
-//   return () => { // this disconnects only when App is unmounted, removed from react tree
-//     connection.disconnect();
-//   };
-// }, [serverUrl, roomId]);
-
-// import reactLogo from './assets/react.svg'
-// import viteLogo from '/vite.svg'
 import './App.css'
 
 import type { student } from './StudentBody/StudentBody.tsx';
@@ -89,12 +76,10 @@ function App() {
 
   if (!data) {
     return <>
-      <h1>Add Student</h1>
       <button>Add Student</button>
     </>
   } else {
     return (<>
-      < StudentBody student={sampleStudent} />
       < StudentBody student={data[0]} />
     </>);
   }

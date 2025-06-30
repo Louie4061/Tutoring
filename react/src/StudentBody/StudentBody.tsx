@@ -1,4 +1,5 @@
 // This is where we will store similiar html to how the student appears
+import { useState } from 'react';
 import styles from './StudentBody.module.css';
 import StudentHeader from './StudentHeader';
 
@@ -75,7 +76,7 @@ export function WrapWorksheet({ word, student }: StudentWordProp) {
                 .map((w, idx) => (
                     <a
                         href={w.link}
-                        className={styles.syllabus_link} // Don't need this for sure
+                        className={styles.syllabus_link}
                         target="_blank"
                         rel="noopener noreferrer"
                     >
@@ -89,55 +90,116 @@ export function WrapWorksheet({ word, student }: StudentWordProp) {
     );
 }
 
+// // are these passed in on the stack
+// export function editWrapper({ word, student }: StudentWordProp) {
+//     return (
+//         <Wrapper title={word}>
+//             <input
+//                 type="email"
+//                 value={student.email}
+//                 onChange={(e) =>
+//                     setSelectedStudent({ ...selectedStudent, email: e.target.value })
+//                 }
+//             />
+//         </Wrapper>
+//     )
+// }
+
 export interface StudentBodyProps {
     student: student;
 };
 export function StudentBody({ student }: StudentBodyProps) {
-    return (
-        <>
+    const [showPopup, setShowPopup] = useState(false);
 
-            <StudentHeader student={student} />
-            <div className={styles.info_section}>
-                <div className={styles.section_title}>Student Info</div>
-                < Wrapper title="Syllabus Link">
-                    <SheetSection student={student} />
-                </Wrapper>
-                < Wrapper title="Tutoring Schedule" >
-                    {student.tutoring_schedule.map((time, idx) => (
-                        <div key={idx} className={styles.schedule_item}>
-                            {time}
-                        </div>
-                    ))}
-                </Wrapper>
-                < Wrapper title="Other Availability">
-                    {student.other_availability.map((time, idx) => (
-                        <div key={idx} className={styles.schedule_item}>
-                            {time}
-                        </div>
-                    ))}
-                </Wrapper>
+    // Do I really need to do this if I have student as a parameter,
+    // Do I need a state variable?
+    // I can do something like this in front of the input:
+    // <label>Name:</label>
+    // on save we may send selectedStudent to the database to deal with some stuff
+    const [selectedStudent, setSelectedStudent] = useState<student | null>(student)
+    if (showPopup && selectedStudent) {
+        return (
+            <div className="popup-overlay">
+                <div className="popup-content">
+                    <h2>Edit Student Info</h2>
 
-                < Wrapper title="Worksheets">
-                    < WrapWorksheet word='completed' student={student} />
-                    < WrapWorksheet word='needed' student={student} />
-                </Wrapper>
+                    < Wrapper title="name">
+                        <input
+                            type="text"
+                            value={selectedStudent.name}
+                            onChange={(e) =>
+                                setSelectedStudent({ ...selectedStudent, name: e.target.value })
+                            }
+                        /></Wrapper>
+                    < Wrapper title="email">
+                        <input
+                            type="text"
+                            value={selectedStudent.email}
+                            onChange={(e) =>
+                                setSelectedStudent({ ...selectedStudent, name: e.target.value })
+                            }
+                        /></Wrapper>
+                    < Wrapper title="phone">
+                        <input
+                            type="text"
+                            value={selectedStudent.phone}
+                            onChange={(e) =>
+                                setSelectedStudent({ ...selectedStudent, name: e.target.value })
+                            }
+                        /></Wrapper>
 
-                < Wrapper title="Test Results">
-                    {student.test_scores.map((score, idx) => (
-                        <div key={idx} className={styles.score_item}>
-                            {score.test_name}: {score.score}%
-                        </div>
-                    ))}
-                </Wrapper>
+                    {/* Add more fields as needed */}
+
+                    {/* <button onClick={() => handleSave(selectedStudent)}>Save</button>
+                    <button onClick={() => setEditModalOpen(false)}>Cancel</button> */}
+                    <button onClick={() => setShowPopup(false)}>Close</button>
+                </div>
             </div>
+        );
+    } else {
+        return (
+            <>
+                <StudentHeader student={student} />
+                <div className={styles.info_section}>
+                    <div className={styles.section_title}>Student Info</div>
+                    < Wrapper title="Syllabus Link">
+                        <SheetSection student={student} />
+                    </Wrapper>
+                    < Wrapper title="Tutoring Schedule" >
+                        {student.tutoring_schedule.map((time, idx) => (
+                            <div key={idx} className={styles.schedule_item}>
+                                {time}
+                            </div>
+                        ))}
+                    </Wrapper>
+                    < Wrapper title="Other Availability">
+                        {student.other_availability.map((time, idx) => (
+                            <div key={idx} className={styles.schedule_item}>
+                                {time}
+                            </div>
+                        ))}
+                    </Wrapper>
 
+                    < Wrapper title="Worksheets">
+                        < WrapWorksheet word='completed' student={student} />
+                        < WrapWorksheet word='needed' student={student} />
+                    </Wrapper>
 
-            <button className={styles.edit_btn} data-id={student.id}>
-                Edit
-            </button>
-            <button className={styles.delete_btn} data-id={student.id}>
-                Delete
-            </button>
-        </>
-    );
+                    < Wrapper title="Test Results">
+                        {student.test_scores.map((score, idx) => (
+                            <div key={idx} className={styles.score_item}>
+                                {score.test_name}: {score.score}%
+                            </div>
+                        ))}
+                    </Wrapper>
+                </div>
+
+                <button onClick={() => setShowPopup(true)} className={styles.edit_btn} data-id={student.id}>
+                    Edit
+                </button>
+
+                <hr className="divider"></hr>
+            </>
+        );
+    }
 }
